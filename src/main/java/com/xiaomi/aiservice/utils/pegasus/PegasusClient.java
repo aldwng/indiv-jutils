@@ -74,6 +74,10 @@ public class PegasusClient {
   }
 
   public void setDoc(String table, String key, String value) {
+    this.setDoc(table, key, value, EXPIRING_SECONDS);
+  }
+
+  public void setDoc(String table, String key, String value, int expireTime) {
     if (StringUtils.isBlank(key) || StringUtils.isBlank(table) || StringUtils.isBlank(value)) {
       return;
     }
@@ -81,10 +85,10 @@ public class PegasusClient {
     try {
       byte[] keyBytes = key.getBytes();
       byte[] valueBytes = value.getBytes();
-      pInterface.set(table, keyBytes, null, valueBytes, EXPIRING_SECONDS);
+      pInterface.set(table, keyBytes, null, valueBytes, expireTime);
     } catch (PException e) {
       LOGGER.error("pegasus:{} set doc key:{} failed due to {}", table, key,
-                   Throwables.getStackTraceAsString(e));
+          Throwables.getStackTraceAsString(e));
     }
     long cost = System.currentTimeMillis() - startTime;
     PerfCounter.count("aiservice_set_pegasus_" + table, 1, cost);
