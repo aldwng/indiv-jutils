@@ -76,7 +76,7 @@
         <dependency>
             <groupId>com.xiaomi.oakbay</groupId>
             <artifactId>oakbay-java-client</artifactId>
-            <version>0.2.0-SNAPSHOT</version>
+            <version>0.2.15</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.thrift</groupId>
