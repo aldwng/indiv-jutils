@@ -1,4 +1,4 @@
-package com.xiaomi.aiservice.utils;
+package net.jutils.utils;
 
 import java.util.Map.Entry;
 
@@ -10,7 +10,7 @@ import com.google.gson.JsonSyntaxException;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author wanglingda@xiaomi.com
+ * @author aldwang
  */
 
 public class GsonUtils {
